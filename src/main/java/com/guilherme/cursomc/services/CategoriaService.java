@@ -11,7 +11,6 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.guilherme.cursomc.domain.Categoria;
-import com.guilherme.cursomc.domain.Cliente;
 import com.guilherme.cursomc.dtos.CategoriaDTO;
 import com.guilherme.cursomc.repositories.CategoriaRepository;
 import com.guilherme.cursomc.services.exceptions.ObjectNotFoundException;
@@ -28,6 +27,7 @@ public class CategoriaService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class));
 	}
 	public Categoria insert(Categoria categoria) {
+		categoria.setId(null);
 		return cr.save(categoria);
 	}
 	public Categoria update(Categoria obj, Integer id) {
