@@ -23,4 +23,8 @@ public class CategoriaService {
 	public Categoria insert(Categoria categoria) {
 		return cr.save(categoria);
 	}
+	public Categoria update(Categoria obj, Integer id) {
+		findById(id);
+		return cr.save(obj);
+	}
 }
