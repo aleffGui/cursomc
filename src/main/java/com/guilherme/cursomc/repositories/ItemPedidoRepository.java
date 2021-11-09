@@ -3,8 +3,8 @@ package com.guilherme.cursomc.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.guilherme.cursomc.domain.Pagamento;
+import com.guilherme.cursomc.domain.ItemPedido;
 @Repository
-public interface PagamentoRepository extends JpaRepository<Pagamento, Integer> {
+public interface ItemPedidoRepository extends JpaRepository<ItemPedido, Integer>{
 
 }
