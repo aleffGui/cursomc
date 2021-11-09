@@ -3,6 +3,7 @@ package com.guilherme.cursomc.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.guilherme.cursomc.domain.Categoria;
@@ -26,5 +27,15 @@ public class CategoriaService {
 	public Categoria update(Categoria obj, Integer id) {
 		findById(id);
 		return cr.save(obj);
+	}
+	public void deleteById(Integer id) {
+		findById(id);
+		try {
+			cr.deleteById(id);	
+		}catch(DataIntegrityViolationException e) {
+			throw new com.guilherme.cursomc.services.exceptions.DataIntegrityViolationException("Não é possível excluir uma categoria que possui produtos!");
+		}
+		
+		
 	}
 }
