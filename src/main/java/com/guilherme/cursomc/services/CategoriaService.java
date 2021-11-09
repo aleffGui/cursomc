@@ -20,4 +20,7 @@ public class CategoriaService {
 		Optional<Categoria> obj = cr.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class));
 	}
+	public Categoria insert(Categoria categoria) {
+		return cr.save(categoria);
+	}
 }
