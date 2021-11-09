@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.guilherme.cursomc.domain.Categoria;
+import com.guilherme.cursomc.domain.Cliente;
 import com.guilherme.cursomc.dtos.CategoriaDTO;
 import com.guilherme.cursomc.repositories.CategoriaRepository;
 import com.guilherme.cursomc.services.exceptions.ObjectNotFoundException;
@@ -30,8 +31,10 @@ public class CategoriaService {
 		return cr.save(categoria);
 	}
 	public Categoria update(Categoria obj, Integer id) {
-		findById(id);
-		return cr.save(obj);
+		Categoria newObj = findById(id);
+		System.out.println(newObj);
+		updateData(newObj, obj);
+		return cr.save(newObj);
 	}
 	public void deleteById(Integer id) {
 		findById(id);
@@ -50,5 +53,8 @@ public class CategoriaService {
 	}
 	public Categoria fromDTO(CategoriaDTO objDto) {
 		return new Categoria(objDto.getId(), objDto.getNome());
+	}
+	private void updateData(Categoria newObj, Categoria obj) {
+		newObj.setNome(obj.getNome());
 	}
 }

@@ -11,7 +11,6 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.guilherme.cursomc.domain.Cliente;
-import com.guilherme.cursomc.domain.Cliente;
 import com.guilherme.cursomc.dtos.ClienteDTO;
 import com.guilherme.cursomc.repositories.ClienteRepository;
 import com.guilherme.cursomc.services.exceptions.ObjectNotFoundException;
