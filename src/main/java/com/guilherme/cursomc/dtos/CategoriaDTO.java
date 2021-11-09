@@ -1,6 +1,5 @@
 package com.guilherme.cursomc.dtos;
 
-
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
