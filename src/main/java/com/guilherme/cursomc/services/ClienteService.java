@@ -17,7 +17,6 @@ import com.guilherme.cursomc.domain.Endereco;
 import com.guilherme.cursomc.dtos.ClienteDTO;
 import com.guilherme.cursomc.dtos.ClienteNewDTO;
 import com.guilherme.cursomc.enums.TipoCliente;
-import com.guilherme.cursomc.repositories.CidadeRepository;
 import com.guilherme.cursomc.repositories.ClienteRepository;
 import com.guilherme.cursomc.repositories.EnderecoRepository;
 import com.guilherme.cursomc.services.exceptions.ObjectNotFoundException;
