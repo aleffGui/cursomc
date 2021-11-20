@@ -20,6 +20,7 @@ import com.guilherme.cursomc.domain.PagamentoComCartao;
 import com.guilherme.cursomc.domain.Pedido;
 import com.guilherme.cursomc.domain.Produto;
 import com.guilherme.cursomc.enums.EstadoPagamento;
+import com.guilherme.cursomc.enums.Perfil;
 import com.guilherme.cursomc.enums.TipoCliente;
 import com.guilherme.cursomc.repositories.CategoriaRepository;
 import com.guilherme.cursomc.repositories.CidadeRepository;
@@ -82,7 +83,6 @@ public class DBService {
 		Produto p9 = new Produto(null, "Abajour", 100.00);
 		Produto p10 = new Produto(null, "Pendente", 180.00);
 		Produto p11 = new Produto(null, "Shampoo", 90.00);
-		Produto p12 = new Produto(null, "Sabonete", 5.00);
 		
 		cat1.getProdutos().addAll(Arrays.asList(p1, p2, p3));
 		cat2.getProdutos().addAll(Arrays.asList(p2,p4));
@@ -121,14 +121,19 @@ public class DBService {
 		cidadeRepository.saveAll(Arrays.asList(c1,c2,c3));
 		
 		Cliente cli1 = new Cliente(null, "Guilherme Ferreira", "alefff.guilherme@gmail.com", "43947557457", TipoCliente.PESSOAFISICA, encoder.encode("123"));
+		Cliente cli2 = new Cliente(null, "Ana costa", "galexferreira@gmail.com", "998458745", TipoCliente.PESSOAFISICA, encoder.encode("123"));
+		cli2.addPerfil(Perfil.ADMIN);
 		cli1.getTelefones().addAll(Arrays.asList("4233054785", "42998474587"));
+		cli2.getTelefones().addAll(Arrays.asList("4233054574", "42998474354"));
 		
 		Endereco end1 = new Endereco(null, "Rua Flores","300", "Apto 303", "Jardim", "85040540", cli1, c1);
 		Endereco end2 = new Endereco(null, "Avenida Matos","105", "Sala 800", "Centro", "81050250", cli1, c2);
+		Endereco end3 = new Endereco(null, "Avenida Floriano","2106", null, "Centro", "81050250", cli2, c2);
 		
 		cli1.getEnderecos().addAll(Arrays.asList(end1,end2));
-		clienteRepository.saveAll(Arrays.asList(cli1));
-		enderecoRepository.saveAll(Arrays.asList(end1,end2));
+		cli2.getEnderecos().addAll(Arrays.asList(end3));
+		clienteRepository.saveAll(Arrays.asList(cli1, cli2));
+		enderecoRepository.saveAll(Arrays.asList(end1,end2,end3));
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		Pedido ped1 = new Pedido(null, sdf.parse("30/07/2021 10:30"), cli1, end1);
