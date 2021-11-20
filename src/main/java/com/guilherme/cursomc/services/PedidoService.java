@@ -10,7 +10,6 @@ import com.guilherme.cursomc.domain.ItemPedido;
 import com.guilherme.cursomc.domain.PagamentoComBoleto;
 import com.guilherme.cursomc.domain.Pedido;
 import com.guilherme.cursomc.enums.EstadoPagamento;
-import com.guilherme.cursomc.repositories.ClienteRepository;
 import com.guilherme.cursomc.repositories.ItemPedidoRepository;
 import com.guilherme.cursomc.repositories.PagamentoRepository;
 import com.guilherme.cursomc.repositories.PedidoRepository;
@@ -38,6 +37,9 @@ public class PedidoService {
 	@Autowired
 	ClienteService clienteService;
 	
+	@Autowired
+	EmailService emailService;
+	
 	public Pedido findById(Integer id) {
 		Optional<Pedido> obj = pr.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Pedido.class));
@@ -63,7 +65,7 @@ public class PedidoService {
 			ip.setPedido(obj);
 		}
 		itemPedidoRepository.saveAll(obj.getItems());
-		System.out.println(obj);
+		emailService.sendOrderConfirmationEmail(obj);
 		return obj;
 	}
 }
