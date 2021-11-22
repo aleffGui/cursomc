@@ -8,7 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.guilherme.cursomc.enums.Perfil;
+import com.guilherme.cursomc.domain.enums.Perfil;
 
 public class UserSS implements UserDetails {
 

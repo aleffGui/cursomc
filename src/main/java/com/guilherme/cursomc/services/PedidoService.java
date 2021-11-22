@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.guilherme.cursomc.domain.ItemPedido;
 import com.guilherme.cursomc.domain.PagamentoComBoleto;
 import com.guilherme.cursomc.domain.Pedido;
-import com.guilherme.cursomc.enums.EstadoPagamento;
+import com.guilherme.cursomc.domain.enums.EstadoPagamento;
 import com.guilherme.cursomc.repositories.ItemPedidoRepository;
 import com.guilherme.cursomc.repositories.PagamentoRepository;
 import com.guilherme.cursomc.repositories.PedidoRepository;
