@@ -38,6 +38,11 @@ public class ClienteResource {
 		Cliente cat = service.findById(id);
 		return ResponseEntity.ok().body(cat);
 	}
+	@GetMapping(value = "/email")
+	public ResponseEntity<Cliente> findByEmail(@RequestParam(value = "value") String email) {
+		Cliente obj = service.findByEmail(email);
+		return ResponseEntity.ok().body(obj);
+	}
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@GetMapping
 	public ResponseEntity<List<ClienteDTO>> findAll() {
