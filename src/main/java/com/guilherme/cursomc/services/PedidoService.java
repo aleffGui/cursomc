@@ -48,16 +48,16 @@ public class PedidoService {
 	EmailService emailService;
 	
 	
-	public Pedido findById(Integer id) {
+	public Optional<Pedido> findById(Integer id) {
 		Optional<Pedido> obj = pr.findById(id);
-		if(obj.equals(null)) {
-			return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Pedido.class));
+		if(obj == null || obj.isEmpty()) {
+			throw new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Pedido.class);
 		}
 		UserSS user = UserService.authenticated();
 		if(user == null || !user.hasRole(Perfil.ADMIN) && !obj.get().getCliente().getId().equals(user.getId())) {
 			throw new AuthorizationException("Acesso negado");
 		}
-		return obj.get();
+		return obj;
 	}
 
 

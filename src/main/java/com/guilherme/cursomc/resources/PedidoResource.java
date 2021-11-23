@@ -1,6 +1,7 @@
 package com.guilherme.cursomc.resources;
 
 import java.net.URI;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -27,8 +28,8 @@ public class PedidoResource {
 	PedidoService service;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Pedido> listar(@PathVariable Integer id) {
-		Pedido pedido = service.findById(id);
+	public ResponseEntity<Optional<Pedido>> listar(@PathVariable Integer id) {
+		Optional<Pedido> pedido = service.findById(id);
 		return ResponseEntity.ok().body(pedido);
 	}
 	@PostMapping
